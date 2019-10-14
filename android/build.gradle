@@ -3,11 +3,12 @@ version '1.0-SNAPSHOT'
 
 buildscript {
     repositories {
+        google()
         jcenter()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.0'
+        classpath 'com.android.tools.build:gradle:3.5.1'
     }
 }
 
@@ -25,6 +26,7 @@ android {
 
     defaultConfig {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        minSdkVersion 16
     }
     lintOptions {
         disable 'InvalidPackage'
