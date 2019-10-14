@@ -14,6 +14,7 @@ buildscript {
 
 allprojects {
     repositories {
+        google()
         jcenter()
     }
 }
@@ -21,14 +22,21 @@ allprojects {
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion '25.0.3'
+    compileSdkVersion 28
 
     defaultConfig {
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         minSdkVersion 16
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     lintOptions {
         disable 'InvalidPackage'
+    }
+}
+
+allprojects {
+    gradle.projectsEvaluated {
+        tasks.withType(JavaCompile) {
+            options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+        }
     }
 }
